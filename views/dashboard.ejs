@@ -1,0 +1,16 @@
+<%- include('layout.ejs'); %>
+<div class="container">
+    <div class="row justify-content-center">
+
+        <h3>Hello, <%= user.name %> </h3> &nbsp;
+
+    </div>
+</div>
+<form class="form-horizontal" method="post" action="/logout">
+<div>
+    <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Logout</button>
+</div>
+</form>
+</body>
+
+</html>

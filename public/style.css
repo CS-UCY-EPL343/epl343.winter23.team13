@@ -1,0 +1,22 @@
+* {
+  font-family: Poppins, sans-serif;
+}
+.custom-shape-divider-top-1698949340 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1698949340 svg {
+  position: relative;
+  display: block;
+  width: calc(142% + 1.3px);
+  height: 181px;
+}
+
+.custom-shape-divider-top-1698949340 .shape-fill {
+  fill: rgb(237, 242, 255);
+}
