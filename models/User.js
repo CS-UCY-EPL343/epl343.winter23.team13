@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+
 const UserSchema = new mongoose.Schema({
-  name: {
+  username: {
     type: String,
     required: true,
   },
@@ -12,14 +13,29 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  location: {
-    type: String,
-    default: "New York",
+  address: {   
+     type: String,    
+     required: true, 
+      },
+   rating: {
+    type: Number,
   },
-  date: {
+  isBanned: {
+    type: Boolean,
+  },
+  profile_picture: {
+    type: String
+  },
+  member_since: {
     type: Date,
     default: Date.now,
   },
+  profile_description: {
+    type: String,
+  },
 });
+
 const User = mongoose.model("User", UserSchema);
 module.exports = User;
+
+
