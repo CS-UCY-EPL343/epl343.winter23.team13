@@ -20,6 +20,12 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  listings: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Listing",
+    },
+  ],
 });
 const User = mongoose.model("User", UserSchema);
 module.exports = User;

@@ -1,16 +1,24 @@
 <%- include('layout.ejs'); %>
-<div class="container">
-    <div class="row justify-content-center">
 
-        <h3>Hello, <%= user.name %> </h3> &nbsp;
+    <div class="container">
+        <div class="row justify-content-center">
 
+            <h3>Hello, <%= user.name %>
+            </h3> &nbsp;
+
+        </div>
     </div>
-</div>
-<form class="form-horizontal" method="post" action="/logout">
-<div>
-    <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Logout</button>
-</div>
-</form>
-</body>
+    <form class="form-horizontal" method="post" action="/logout">
+        <div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Logout</button>
+        </div>
+    </form>
+    <form class="form-horizontal" method="get" action="/createlisting">
+        <div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block login-button mt-4">Create a
+                Listing</button>
+        </div>
+    </form>
+    </body>
 
-</html>
+    </html>

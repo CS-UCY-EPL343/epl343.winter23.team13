@@ -9,13 +9,19 @@ const {
 } = require("../controllers/loginController");
 const { dashboardView } = require("../controllers/dashboardController");
 const { protectRoute } = require("../auth/protect");
+const {
+  createlistingView,
+  newListing,
+} = require("../controllers/listingcreateController");
 
 const router = express.Router();
 router.get("/register", registerView);
 router.get("/login", loginView);
 router.get("/dashboard", protectRoute, dashboardView);
 router.get("/landingPage", landingPageView);
+router.get("/createlisting", protectRoute, createlistingView);
 
+router.post("/dashboard", protectRoute, dashboardView);
 router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.post("/logout", function (req, res, next) {
@@ -26,5 +32,6 @@ router.post("/logout", function (req, res, next) {
     res.redirect("/login");
   });
 });
+router.post("/createlisting", newListing);
 
 module.exports = router;
