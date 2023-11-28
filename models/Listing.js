@@ -10,10 +10,10 @@ const ListingSchema = new mongoose.Schema({
     type: String,
     //required: true,
   },
-  listing_image: {
-    type: String,
+  listing_images: {
+    type: [String],
     //required: true,
-    default: "../public/apple.jpg",
+    
   },
   price_per_day: {
     type: Number,

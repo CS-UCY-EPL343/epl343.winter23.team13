@@ -1,5 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
 @import "tailwindcss/base";
 
 @import "tailwindcss/components";
 
 @import "tailwindcss/utilities";
+
+/* Vale to Bold gia to Roboto */
+html * {
+  font-family: "Roboto";
+  
+}
+
+header {
+  background-color: #00adb5;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+/*
+nav {
+  background-color: #393e46;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+*/
+
+section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.product {
+  border: 1px solid #393e46;
+  background-color: #eeeeee;
+  padding: 20px;
+  margin: 10px;
+  width: 250px;
+}
+
+.listing-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}

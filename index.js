@@ -16,6 +16,7 @@ mongoose
   .catch((err) => console.log(err));
 
 app.use(express.static("public"));
+app.use(express.static("uploads"));
 app.use(express.static("svg"));
 app.set("view engine", "ejs");
 //Routes

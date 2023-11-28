@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html class = "h-full bg-indigo-100 ">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Listings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="output.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  </head>
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Roboto');
+  </style>
+  <body class = "h-full flex flex-col" onload = 'updateSidebarLoad()'>
+    <nav class="z-20">
+      <aside class="fixed inset-y-0 max-h-screen overflow-y-auto left-0 w-80  bg-white  text-colour2  shadow-2xl bg-opacity-75 hover:bg-opacity-100 backdrop-blur-sm" id="sidebar">
+        <h1 class="py-3.5 text-2xl bg-dark_purple pl-3 text-white  font-semibold">RentAnything.
+           <button class="focus:outline-none" id = "toggleRentAnything" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="text-white hover:text-blue-300 transition-transform transform hover:translate-x-[-0.37rem] w-8 h-8 inline-block ml-20 bi bi-box-arrow-left" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+          <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+        </svg>
+        </button>
+        </h1>
+         
+          <h6 class="mb-3 pl-2 pt-6  text-lg  font-bold text-gray-900 dark:text-white">Find by Category</h6>
+          
+
+          <ul class = "space-y-4 text-base ">
+            <li class="flex items-center pl-2">
+              <input id="electronics" type="checkbox" value=""
+              class="category-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+              <label for="electronics" class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500"> Electronic Gadget</label>
+            </li>
+
+            <li class="flex items-center pl-2">
+              <input id="camera-equipment" type="checkbox" value=""
+              class="category-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+              <label for="camera-equipment" class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500">Camera Equipment</label>
+            </li>
+
+            <li class="flex items-center pl-2">
+              <input id="power-tools" type="checkbox" value=""
+              class="category-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+              <label for="power-tools" class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500"> Power Tools</label>
+            </li>
+
+            <li class="flex items-center pl-2">
+              <input id="camping-gear" type="checkbox" value=""
+              class="category-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+              <label for="camping-gear" class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500"> Camping Gear</label>
+            </li>
+
+            <li class="flex items-center pl-2">
+              <input id="fashion-wear" type="checkbox" value=""
+              class="category-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+              <label for="fashion-wear" class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500">Fashion & Formal Wear</label>
+            </li>
+            
+            <li class="flex items-center pl-2">
+              <input id="video-games" type="checkbox" value=""
+              class="category-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+              <label for="video-games" class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500"> Video Games & Consoles</label>
+            </li>
+            
+            <li class="flex items-center pl-2">
+              <input id="art-supplies" type="checkbox" value=""
+              class="category-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+              <label for="art-supplies" class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500">Art Supplies</label>
+            </li>
+
+            <li class="flex items-center pl-2">
+              <input id="party-supplies" type="checkbox" value=""
+              class="category-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+              <label for="party-supplies" class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500">Party Supplies</label>
+            </li>
+
+            <li class="flex items-center pl-2">
+              <input id="audio-equipment" type="checkbox" value=""
+              class="category-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+              <label for="audio-equipment" class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500">Audio Equipment</label>
+            </li>
+
+            <li class="flex items-center pl-2">
+              <input id="musical-instruments" type="checkbox" value=""
+              class="category-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+              <label for="musical-instruments" class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500">Musical Instruments</label>
+            </li>
+
+            <li class="flex items-center pl-2">
+              <input id="fitness-equipment" type="checkbox" value=""
+              class="category-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+              <label for="fitness-equipment" class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500">Fitness Equipment</label>
+            </li>
+
+            <li class="flex items-center pl-2">
+              <input id="miscellaneous" type="checkbox" value=""
+              class="category-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+              <label for="miscellaneous" class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500">Miscellaneous</label>
+            </li>
+          </ul>
+          <hr class="my-2 border-t border-gray-300">
+          <h6 class="mb-3 pl-2  text-lg  font-bold text-gray-900 dark:text-white">Sort by</h6>
+
+          <ul class = "space-y-4 text-base ">
+            <li class="flex items-center pl-2">
+              <input id="price_ascending" type="checkbox" value=""
+              class="sorting-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+              <label for="price_ascending" class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500">Price Ascending</label>
+            </li>
+
+            <li class="flex items-center pl-2">
+              <input id="price_descending" type="checkbox" value=""
+              class="sorting-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+              <label for="price_descending" class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500">Price Descending</label>
+            </li>
+          </ul>
+          
+          <!---
+          <script>
+            document.addEventListener('DOMContentLoaded', function () {
+              const categoryCheckboxes = document.querySelectorAll('.category-checkbox');
+              const sortingCheckboxes = document.querySelectorAll('.sorting-checkbox');
+              const searchInput = document.getElementById('search-input');
+
+
+              categoryCheckboxes.forEach((checkbox) => {
+                checkbox.addEventListener('change', function () {
+                  handleCategoryCheckbox(checkbox);
+                });
+              });
+          
+              sortingCheckboxes.forEach((checkbox) => {
+                checkbox.addEventListener('change', function () {
+                  handleSortingCheckbox(checkbox);
+                });
+              });
+              searchInput.addEventListener('input', function () {
+                handleSearchInput(searchInput.value);
+              });
+              function getSelectedCategories() {
+                return Array.from(categoryCheckboxes)
+                  .filter((checkbox) => checkbox.checked)
+                  .map((checkbox) => checkbox.id);
+              }
+          
+              function handleCategoryCheckbox(checkbox) {
+                const selectedCategories = getSelectedCategories();
+                const sortCheckbox = document.querySelector('.sorting-checkbox:checked');
+                const sort = sortCheckbox ? sortCheckbox.id : null;
+                
+                
+                sendRequestToServer(selectedCategories.length > 0 ? selectedCategories : null, sort);
+              }
+          
+              function handleSortingCheckbox(checkbox) {
+                sortingCheckboxes.forEach((otherCheckbox) => {
+                  if (otherCheckbox !== checkbox) {
+                    otherCheckbox.checked = false;
+                  }
+                });
+          
+                const sort = checkbox.checked ? checkbox.id : null;
+                const selectedCategories = getSelectedCategories();
+          
+                sendRequestToServer(selectedCategories.length > 0 ? selectedCategories : null, sort);
+              }
+          
+              function sendRequestToServer(categories, sort) {
+                // Additional logic for sending request to the server with categories and sort
+                console.log(`Categories: ${categories}, Sort: ${sort}`);
+          
+                // You may want to send an AJAX request to the server with the selected categories and sort
+              }
+            });
+          </script> -->
+          <script>
+            document.addEventListener('DOMContentLoaded', function () {
+              const categoryCheckboxes = document.querySelectorAll('.category-checkbox');
+              const sortingCheckboxes = document.querySelectorAll('.sorting-checkbox');
+              const searchInput = document.getElementById('search-input'); // Get the search input field
+          
+              categoryCheckboxes.forEach((checkbox) => {
+                checkbox.addEventListener('change', function () {
+                  handleCategoryCheckbox(checkbox);
+                });
+              });
+          
+              sortingCheckboxes.forEach((checkbox) => {
+                checkbox.addEventListener('change', function () {
+                  handleSortingCheckbox(checkbox);
+                });
+              });
+          
+              // Add an event listener for the search input
+              searchInput.addEventListener('input', function () {
+                handleSearchInput(searchInput.value);
+              });
+          
+              function getSelectedCategories() {
+                return Array.from(categoryCheckboxes)
+                  .filter((checkbox) => checkbox.checked)
+                  .map((checkbox) => checkbox.id);
+              }
+          
+              function handleCategoryCheckbox(checkbox) {
+                const selectedCategories = getSelectedCategories();
+                const sortCheckbox = document.querySelector('.sorting-checkbox:checked');
+                const sort = sortCheckbox ? sortCheckbox.id : null;
+                const searchQuery = searchInput.value; // Get the search input value
+          
+                sendRequestToServer(selectedCategories.length > 0 ? selectedCategories : null, sort, searchQuery);
+              }
+          
+              function handleSortingCheckbox(checkbox) {
+                sortingCheckboxes.forEach((otherCheckbox) => {
+                  if (otherCheckbox !== checkbox) {
+                    otherCheckbox.checked = false;
+                  }
+                });
+          
+                const sort = checkbox.checked ? checkbox.id : null;
+                const selectedCategories = getSelectedCategories();
+                const searchQuery = searchInput.value; // Get the search input value
+          
+                sendRequestToServer(selectedCategories.length > 0 ? selectedCategories : null, sort, searchQuery);
+              }
+          
+              function handleSearchInput(query) {
+                const selectedCategories = getSelectedCategories();
+                const sortCheckbox = document.querySelector('.sorting-checkbox:checked');
+                const sort = sortCheckbox ? sortCheckbox.id : null;
+          
+                sendRequestToServer(selectedCategories.length > 0 ? selectedCategories : null, sort, query);
+              }
+          
+              function sendRequestToServer(categories, sort, query) {
+                // Additional logic for sending request to the server with categories, sort, and query
+                console.log(`Categories: ${categories}, Sort: ${sort}, Query: ${query}`);
+          
+                // You may want to send an AJAX request to the server with the selected categories, sort, and query
+              }
+            });
+          </script>
+
+          <hr class="my-2 border-t border-gray-300">
+
+          <h6 class="mb-3 pl-2  text-lg  font-bold text-gray-900 dark:text-white">Trending</h6>
+          <div class = "space-y-4 text-base">
+            <button class = "ml-2 text-lg font-semibold text-gray-700 dark:text-gray-100  hover:text-indigo-500 duration-100 ease-in-out flex items-center pl-2">Best Sellers</button>
+            <button class = "ml-2 text-lg font-semibold text-gray-700 dark:text-gray-100  hover:text-indigo-500 duration-100 ease-in-out flex items-center pl-2">New Releases</button>
+            <button class = "ml-2 text-lg font-semibold text-gray-700 dark:text-gray-100  hover:text-indigo-500 duration-100 ease-in-out flex items-center pl-2">Deals</button>
+          </ul>
+            
+          <hr class="my-2 border-t border-gray-300">
+
+          <h6 class="mb-3 pl-2  text-lg  font-bold text-gray-900 dark:text-white">Help & Settings</h6>
+          <div class = "space-y-4 text-base">
+            <a href="#" class = "ml-2 text-lg font-semibold text-gray-700 dark:text-gray-100  hover:text-indigo-500 duration-100 ease-in-out flex items-center pl-2">Your Account</a>
+            <a href="#" class = "ml-2 text-lg font-semibold text-gray-700 dark:text-gray-100  hover:text-indigo-500 duration-100 ease-in-out flex items-center pl-2">Sign Out</a>
+          </div>
+
+        
+        
+      </aside>
+
+
+    </nav>
+    <!-- Just an image -->
+    <nav class="bg-primary flex items-center justify-between px-5 py-1   text-black z-10 fixed top-0 w-full bg-opacity-60 backdrop-blur-sm">
+      
+     
+      <div class="flex items-center space-x-5">
+        <button class ="focus:outline-none" id="toggleSidebar" >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6" >
+            <path fill-rule="evenodd" d="M3 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 5.25zm0 4.5A.75.75 0 013.75 9h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 9.75zm0 4.5a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75zm0 4.5a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z" clip-rule="evenodd" />
+          </svg>
+        </button>
+     
+
+        <script>
+         
+          const sidebar = document.getElementById('sidebar');
+          const toggleSidebar = document.getElementById('toggleSidebar');
+          const toggleRentAnything = document.getElementById('toggleRentAnything');
+          
+
+          let isSidebarVisible = false;
+         
+          toggleSidebar.addEventListener('click', () => {
+            isSidebarVisible = !isSidebarVisible;
+            updateSidebar();
+          });
+
+          toggleRentAnything.addEventListener('click', () => {
+            isSidebarVisible = false;
+            updateSidebar();
+          });
+
+          function updateSidebar() {
+            if (isSidebarVisible) {
+              sidebar.style.transform = 'translateX(0)';
+              
+
+            } else {
+              sidebar.style.transform = 'translateX(-100%)';
+              
+            }
+            
+              sidebar.style.transitionProperty = 'transform';
+              sidebar.style.transitionDuration = '300ms';
+              sidebar.style.transitionTimingFunction = 'ease-in-out';
+            
+          }
+
+
+          function updateSidebarLoad() {
+           
+              sidebar.style.transform = 'translateX(-100%)';
+              
+          }
+        </script>
+        <a href="landingpage.html"> 
+        <h1 class="text-xl font-bold">RentAnything.</h1>
+      </a>
+      </div>
+       
+      <div class="flex w-[350px] items-center space-x-3 border-black shadow-sd relative">
+        <label for="search-input" class="absolute left-4 top-1 text-gray-400 border-r pr-2">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+            <path fill-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM2.25 10.5a8.25 8.25 0 1114.59 5.28l4.69 4.69a.75.75 0 11-1.06 1.06l-4.69-4.69A8.25 8.25 0 012.25 10.5z" clip-rule="evenodd" />
+          </svg>
+        </label>
+        <form id="search-form" action="/search" method="GET">
+          <input id="search-input" name="query"    class="w-full bg-white px-32   py-2 text-xs rounded-2xl outline-0 focus:bg-gray-50" type="text" placeholder="Search ..." />
+
+        </form>
+        
+      </div>
+      
+
+      <div class="flex items-center mt-2 space-x-5  xl:text-base md:text-sm md:font-bold">
+        <a href="" class="border-2  hover:bg-blue-300 hover:bg-opacity-70 border-black rounded-2xl font-semibold text-black invisible xl:visible md:invisible py-1 px-3">About Us</a>
+        <a href="" class="border-2  hover:bg-blue-300 hover:bg-opacity-70 border-black rounded-2xl font-semibold text-black  py-1 px-3">Create Listing</a>
+        <a href="" class="border-2  hover:bg-blue-300 hover:bg-opacity-70 border-black rounded-2xl font-semibold text-black invisible xl:visible md:invisible py-1 px-3">Contact Us</a>
+        <a href="" class = "bg-purple-600 hover:bg-blue-300 p-1 rounded-3xl"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" 
+          class=" w-8 h-8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+        </svg>
+        </a>
+        <a href = "profile.html" class =" hover:text-blue-300 hover:bg-opacity-70"> 
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-11 h-12 ">
+          <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd" />
+        </svg>
+      </a>
+      </div>
+    </nav>
+
+
+    <div class = "mt-16" id="padding-block"></div>
+    <div class="flex-grow" id="main-content">
+
+      <div class="pt-10 text-center sm:invisible lg:visible">
+        <h2 class="text-xl font-bold">Search results for...</h2>
+      </div>
+<!-- Product List -->
+<section class="py-10">
+ 
+  <div class="mx-auto grid max-w-[80%] grid-cols-1 gap-6 p-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-between">
+    <% allListings.forEach(listing => { %>
+      <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 hover:bg-colour2">
+        <a href="">
+          <div class="relative flex items-end overflow-hidden rounded-xl">
+            <img class="listing-image" src="<%= listing.listing_images[0] %>"   />
+            <!-- Assuming you have some kind of icon or badge for the listing -->
+          </div>
+
+          <div class="mt-1 p-2">
+            <h2 class="text-slate-700"><%= listing.listing_name %></h2>
+            <p class="mt-1 text-sm text-slate-400"><%= listing.owner.location %></p>
+
+            <div class="mt-3 flex items-end justify-between">
+              <p class="text-base font-bold text-blue-500">Price per day: $<%= listing.price_per_day %></p>
+
+              <div class="flex items-center space-x-1.5 rounded-lg bg-indigo-500 px-4 py-1.5 text-white duration-100 hover:bg-indigo-600">
+                <button class="text-sm">View Details</button>
+              </div>
+            </div>
+          </div>
+        </a>
+      </article>
+    <% }); %>
+  </div>
+</section>
+
+</div>
+
+<footer class="bg-white dark:bg-gray-900 pt-4">
+  <div class="container px-6 py-12 mx-auto">
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-5">
+          <div class="sm:col-span-2">
+              <h1 class="max-w-lg text-xl font-semibold tracking-tight text-gray-800 xl:text-2xl dark:text-white">Subscribe our newsletter to get update.</h1>
+
+              <div class="flex flex-col mx-auto mt-6 space-y-3 md:space-y-0 md:flex-row">
+                  <input id="email" type="text" class="px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300" placeholder="Email Address">
+          
+                  <button class="w-full px-6 py-2.5 text-sm font-medium tracking-wider text-white transition-colors duration-300 transform md:w-auto md:mx-4 focus:outline-none bg-gray-800 rounded-lg hover:bg-gray-700 focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+                      Subscribe
+                  </button>
+              </div>
+          </div>
+
+          <div>
+              <p class="font-semibold text-gray-800 dark:text-white">Quick Link</p>
+
+              <div class="flex flex-col items-start mt-5 space-y-2">
+                  <a href="#" class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">Home</a>
+                  <a href="#" class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">About Us</a>
+                  <a href="#" class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">Our Philosophy</a>
+              </div>
+          </div>
+
+          <div>
+              <p class="font-semibold text-gray-800 dark:text-white">Let us help you.</p>
+
+              <div class="flex flex-col items-start mt-5 space-y-2">
+                  <a href="#" class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">Suggestions.</a>
+                  <a href="#" class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">Help with Listings.</a>
+                  <a href="#" class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">Membership</a>
+              </div>
+          </div>
+
+          <div>
+            <p class="font-semibold text-gray-800 dark:text-white">Popular Categories</p>
+
+            <div class="flex flex-col items-start mt-5 space-y-2">
+                <a href="#" class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">Electronic Gadget</a>
+                <a href="#" class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">Camera Equipment</a>
+                <a href="#" class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">Audio Equipment</a>
+            </div>
+        </div>
+      </div>
+      
+      
+  </div>
+</footer>
+  </body>
+</html>
+
+
