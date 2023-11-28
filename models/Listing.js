@@ -12,8 +12,6 @@ const ListingSchema = new mongoose.Schema({
   },
   listing_images: {
     type: [String],
-    //required: true,
-    
   },
   price_per_day: {
     type: Number,

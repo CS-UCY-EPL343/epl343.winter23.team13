@@ -13,6 +13,7 @@ const {
   createlistingView,
   newListing,
 } = require("../controllers/listingcreateController");
+const { homepageView } = require("../controllers/homepageController");
 //const { upload, storage } = require("../index");
 const router = express.Router();
 const multer = require("multer");
@@ -33,7 +34,10 @@ const upload = multer({ storage: storage });
 const {
   getAllListings,
   searchResultsView,
+  getListingsByName,
 } = require("../controllers/searchController");
+
+//GET REQUESTS
 router.get("/register", registerView);
 router.get("/login", loginView);
 router.get("/dashboard", protectRoute, dashboardView);
@@ -44,7 +48,23 @@ router.get("/", function (req, res, next) {
 });
 router.get("/searchResults", async (req, res) => {
   try {
-    const allListings = await getAllListings(req,res);
+    const allListings = await getAllListings();
+
+    res.render("search_results", { allListings });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+//
+router.get("/home", homepageView);
+router.get("/", function (req, res, next) {
+  res.redirect("/landingpage");
+});
+router.get("/searchResults", async (req, res) => {
+  try {
+    const allListings = await getAllListings(req, res);
 
     res.render("search_results", { allListings });
   } catch (error) {
@@ -57,10 +77,10 @@ router.post("/dashboard", protectRoute, dashboardView);
 router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.post("/logout", logoutUser);
-//router.post("/createlisting", upload.array("listing_images", 5), newListing);
 router.post("/createlisting", upload.array("listing_images", 5), (req, res) => {
-  // Handle file uploads
-  console.log(req.files); // Array of uploaded files
+  console.log(req.files);
   newListing(req, res);
 });
+router.post("/searchByName", getListingsByName);
+
 module.exports = router;

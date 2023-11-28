@@ -1,68 +1,42 @@
 const Listing = require("../models/Listing");
 
 const searchResultsView = (req, res) => {
-  res.render("search", {});
+  res.render("search_results", {});
 };
 
-/*
-const getAllListings = async (req, res) => {
-  try {
-
-
-    const { sort, categories } = req.query;
-
-    // Construct the query based on parameters
-    const query = {};
-
-    if (categories) {
-      if (Array.isArray(categories)) {
-        // If categories is an array, find listings that match any of the categories
-        query.category = { $in: categories };
-      } else {
-        // If categories is not an array, find listings with that specific category
-        query.category = categories;
-      }
-    }
-
-    // Fetch listings from the database based on the query
-    let listings;
-
-    if (sort === 'price_ascending') {
-      listings = await Listing.find(query).sort({ price: 1 });
-    } else if (sort === 'price_descending') {
-      listings = await Listing.find(query).sort({ price: -1 });
-    } else {
-      listings = await Listing.find(query);
-    }
-
-    // Send the listings as a response
-    res.json(listings);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-};
-*/
-const getAllListings = async (req,res) => {
+const getAllListings = async () => {
   try {
     const allListings = await Listing.find().select(
+      "listing_name description listing_images price_per_day category max_duration owner"
+    );
+
+    return allListings;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+const getListingsByName = async (req, res) => {
+  try {
+    const searchName = req.body["search-input"];
+    console.log(req.body);
+
+    const allListings = await Listing.find({
+      listing_name: { $regex: searchName, $options: "i" },
+    }).select(
       "listing_name description listing_images price_per_day category max_duration owner"
     );
 
     res.render("search_results", { allListings });
   } catch (error) {
     console.error(error);
-    res.status(500).send("Internal Server Error");
+    res.status(500).json({ message: "Internal server error" });
   }
 };
 
 module.exports = {
   searchResultsView,
   getAllListings,
-};
-
-
-module.exports = {
-  searchResultsView,
-  getAllListings,
+  getListingsByName,
 };
