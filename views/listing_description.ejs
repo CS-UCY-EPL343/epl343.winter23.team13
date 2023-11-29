@@ -15,7 +15,7 @@
   <body class = "h-full flex flex-col antialiased" >
     <nav class="bg-primary flex items-center justify-between px-5 py-1  text-black z-10 fixed top-0 w-full bg-opacity-60">
   
-        <a href="landingpage.html"> 
+        <a href="/home"> 
             <h1 class="text-xl font-bold">RentAnything.</h1>
           </a>
           </div>
@@ -40,13 +40,12 @@
   
       <div class="max-w-7xl mx-auto px-4 pt-10 sm:px-6 lg:px-8 py-1 md:py-4">
         <div class="flex items-center justify-between md:justify-start">
-          <!-- Menu Trigger -->
           <button type="button" class="md:hidden w-10 h-10 rounded-lg -ml-2 flex justify-center items-center">
             <svg class="text-gray-500 w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
-          <!-- ./ Menu Trigger -->
+
     
         
       </div>
@@ -55,7 +54,7 @@
     
 
     <div class="py-10  bg-indigo-100 ">
-      <!-- Breadcrumbs -->
+
       <div class="max-w-7xl mx-auto px-4 pt-10 sm:px-6 lg:px-8">
         <div class="flex items-center space-x-2 text-gray-500 text-sm">
           <a href="#" class="hover:underline hover:text-gray-600">Home</a>
@@ -70,10 +69,9 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
           </span>
-          <span>Headphones</span>
         </div>
       </div>
-      <!-- ./ Breadcrumbs -->
+      
     
     
       <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 mt-6">
@@ -82,7 +80,13 @@
             <div x-data="{ image: 1 }" x-cloak class="w-full">
               <div class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 ">
                 <div x-show="image === 1" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex w-full object-cover">
-                  <img src="/public/img/canon.jpg" alt="Image description" class="h-full rounded">
+                  <div class="relative flex items-end overflow-hidden rounded-xl">
+                    <% if (listing.listing_images && listing.listing_images.length> 0) { %>
+                      <img class="listing-image" src="<%= listing.listing_images[0] %>" />
+                      <% } else { %>
+                        <img class="listing-image" src="apple.jpg" />
+                        <% } %>
+                  </div>
                 </div>
     
                 <div x-show="image === 2" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex w-full object-cover">
@@ -110,21 +114,19 @@
             </div>
           </div>
           <div class="md:flex-1 px-4">
-            <h2 class="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl">Canon XYZ</h2>
-            <p class="text-gray-500 text-sm">By <a href="#" class="text-indigo-600 hover:underline">Rent Anything</a></p>
-    
+            <h2 class="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl"><%= listing.listing_name %></h2>
             <div class="flex items-center space-x-4 my-4">
               <div>
                 <div class="rounded-lg bg-white flex py-2 px-3">
                   <h1 class="font-bold text-xl">Price per day:</h1>
-                  <span class="font-semibold text-indigo-600 text-xl">$25</span>
+                  <span class="font-semibold text-indigo-600 text-xl"> $<%= listing.price_per_day %></span>
                 </div>
               </div>
               <div class="flex-1">
               </div>
             </div>
     
-            <p class="text-black">Unlock limitless photographic possibilities with our Canon XYZ Camera available for rent. This state-of-the-art camera is the perfect companion for capturing life's memorable moments with precision and clarity. Whether you're a professional photographer or an amateur looking to explore your creativity, the Canon XYZ Camera is equipped with advanced features to meet your every need. Its user-friendly interface ensures a seamless experience, while the ergonomic design makes handling a breeze. Rent the Canon XYZ Camera today and embark on a photography journey where every click tells a unique story. Capture the essence of your special moments with this high-performance rental camera, available to elevate your photography experience without the commitment of ownership.</p>
+            <p class="text-black"><%= listing.description %></p>
     
             <div class="flex py-4 space-x-4">
     

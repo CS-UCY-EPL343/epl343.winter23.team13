@@ -38,6 +38,9 @@ const {
   getListingsByFilter,
   godSearch,
 } = require("../controllers/searchController");
+const {
+  listingDescriptionView,
+} = require("../controllers/viewListingController");
 
 //GET REQUESTS
 router.get("/register", registerView);
@@ -48,7 +51,7 @@ router.get("/createlisting", protectRoute, createlistingView);
 router.get("/", function (req, res, next) {
   res.redirect("/landingpage");
 });
-router.get("/searchResults", async (req, res) => {
+router.get("/searchResults", protectRoute, async (req, res) => {
   try {
     const allListings = await getAllListings();
 
@@ -64,6 +67,8 @@ router.get("/home", protectRoute, sliderView);
 router.get("/", function (req, res, next) {
   res.redirect("/landingpage");
 });
+//router.post("/listingDescription", listingDescriptionView);
+router.post("/listingDescription", protectRoute, listingDescriptionView);
 
 router.post("/dashboard", protectRoute, dashboardView);
 router.post("/register", registerUser);
