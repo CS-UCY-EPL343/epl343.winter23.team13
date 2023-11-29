@@ -7,14 +7,13 @@ const User = require("../models/User");
 
 const loginCheck = (passport) => {
   passport.use(
-    new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
-      //Check customer
-
+    new LocalStrategy({ usernameField: "email"}, (email, password, done) => {
+      
       User.findOne({ email: email })
         .then((user) => {
           if (!user) {
             console.log("wrong email");
-            return done();
+            return done(null,false,{message: "Wrong email or password. Please try again."});
           }
 
           //Match Password
@@ -25,7 +24,7 @@ const loginCheck = (passport) => {
               return done(null, user);
             } else {
               console.log("Wrong password");
-              return done();
+              return done(null,false, {message: 'Wrong email or password. Please try again.'});
             }
           });
         })

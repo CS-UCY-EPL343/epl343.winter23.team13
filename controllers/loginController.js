@@ -53,23 +53,28 @@ const registerUser = (req, res) => {
 };
 // For View
 const loginView = (req, res) => {
-  res.render("login", {});
+  let errorMessage = "";
+  errorMessage = req.flash('error');
+  res.render("login",{errorMessage: errorMessage});
 };
 //Logging in Function
 const loginUser = (req, res) => {
   const { email, password } = req.body;
+  
   //Required
   if (!email || !password) {
-    console.log("Please fill in all the fields");
+    errorMessage = "Please fill in all the fields";
     res.render("login", {
       email,
       password,
+      errorMessage,
     });
   } else {
     passport.authenticate("local", {
       successRedirect: "/dashboard",
       failureRedirect: "/login",
       failureMessage: true,
+      failureFlash: req.flash('error'),
     })(req, res);
   }
 };
