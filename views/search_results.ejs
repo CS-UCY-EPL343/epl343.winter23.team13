@@ -6,9 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Listings</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9+4aHK8yyUHUSCcJHgXloTyT2A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="output.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
 </head>
@@ -20,7 +17,7 @@
   <nav class="z-20">
     <aside
       class="fixed inset-y-0 max-h-screen overflow-y-auto left-0 w-80  bg-white  text-colour2  shadow-2xl bg-opacity-75 hover:bg-opacity-100 backdrop-blur-sm"
-      id="sidebar">
+      id="sidebar" style="display: none;">
       <h1 class="py-3.5 text-2xl bg-dark_purple pl-3 text-white  font-semibold">RentAnything.
         <button class="focus:outline-none" id="toggleRentAnything"><svg xmlns="http://www.w3.org/2000/svg" width="16"
             height="16" fill="currentColor"
@@ -36,10 +33,10 @@
 
       <h6 class="mb-3 pl-2 pt-6  text-lg  font-bold text-gray-900 dark:text-white">Find by Category</h6>
 
-
+    <form id="category-form" action="/filterResults" method="POST">
       <ul class="space-y-4 text-base ">
         <li class="flex items-center pl-2">
-          <input id="electronics" type="checkbox" value=""
+          <input name="category" type="checkbox" value="Electronic Gadget"
             class="category-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
           <label for="electronics"
             class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500"> Electronic
@@ -47,7 +44,7 @@
         </li>
 
         <li class="flex items-center pl-2">
-          <input id="camera-equipment" type="checkbox" value=""
+          <input name="category" type="checkbox" value="Camera Equipment"
             class="category-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
           <label for="camera-equipment"
             class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500">Camera
@@ -55,7 +52,7 @@
         </li>
 
         <li class="flex items-center pl-2">
-          <input id="power-tools" type="checkbox" value=""
+          <input name="category" type="checkbox" value="Power Tools"
             class="category-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
           <label for="power-tools"
             class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500"> Power
@@ -63,7 +60,7 @@
         </li>
 
         <li class="flex items-center pl-2">
-          <input id="camping-gear" type="checkbox" value=""
+          <input name="category" type="checkbox" value="Camping Gear"
             class="category-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
           <label for="camping-gear"
             class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500"> Camping
@@ -71,7 +68,7 @@
         </li>
 
         <li class="flex items-center pl-2">
-          <input id="fashion-wear" type="checkbox" value=""
+          <input name="category" type="checkbox" value="Fashion and Formal Wear"
             class="category-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
           <label for="fashion-wear"
             class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500">Fashion & Formal
@@ -79,7 +76,7 @@
         </li>
 
         <li class="flex items-center pl-2">
-          <input id="video-games" type="checkbox" value=""
+          <input name="category" type="checkbox" value="Video Games and Consoles"
             class="category-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
           <label for="video-games"
             class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500"> Video Games &
@@ -87,7 +84,7 @@
         </li>
 
         <li class="flex items-center pl-2">
-          <input id="art-supplies" type="checkbox" value=""
+          <input name="category" type="checkbox" value="Art Supplies"
             class="category-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
           <label for="art-supplies"
             class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500">Art
@@ -95,7 +92,7 @@
         </li>
 
         <li class="flex items-center pl-2">
-          <input id="party-supplies" type="checkbox" value=""
+          <input name="category" type="checkbox" value="Party Supplies"
             class="category-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
           <label for="party-supplies"
             class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500">Party
@@ -103,23 +100,23 @@
         </li>
 
         <li class="flex items-center pl-2">
-          <input id="audio-equipment" type="checkbox" value=""
+          <input name="category" type="checkbox" value="Audio Engineering Equipment"
             class="category-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-          <label for="audio-equipment"
+          <label for="Audio Engineering Equipment"
             class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500">Audio
             Equipment</label>
         </li>
 
         <li class="flex items-center pl-2">
-          <input id="musical-instruments" type="checkbox" value=""
+          <input name="category" type="checkbox" value="Musical Instruments"
             class="category-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-          <label for="musical-instruments"
+          <label for="Musical Instruments"
             class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500">Musical
             Instruments</label>
         </li>
 
         <li class="flex items-center pl-2">
-          <input id="fitness-equipment" type="checkbox" value=""
+          <input name="category" type="checkbox" value="Fitness Equipment"
             class="category-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
           <label for="fitness-equipment"
             class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500">Fitness
@@ -127,7 +124,7 @@
         </li>
 
         <li class="flex items-center pl-2">
-          <input id="miscellaneous" type="checkbox" value=""
+          <input name="category" type="checkbox" value="Miscellaneous"
             class="category-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
           <label for="miscellaneous"
             class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500">Miscellaneous</label>
@@ -135,10 +132,11 @@
       </ul>
       <hr class="my-2 border-t border-gray-300">
       <h6 class="mb-3 pl-2  text-lg  font-bold text-gray-900 dark:text-white">Sort by</h6>
-
+      
+     
       <ul class="space-y-4 text-base ">
         <li class="flex items-center pl-2">
-          <input id="price_ascending" type="checkbox" value=""
+          <input name="sorting" type="checkbox" value="ascending"
             class="sorting-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
           <label for="price_ascending"
             class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500">Price
@@ -146,7 +144,7 @@
         </li>
 
         <li class="flex items-center pl-2">
-          <input id="price_descending" type="checkbox" value=""
+          <input name="sorting" type="checkbox" value="descending"
             class="sorting-checkbox w-4 h-4  bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
           <label for="price_descending"
             class="ml-2 text-base font-semibold text-gray-900 dark:text-gray-100 hover:text-indigo-500">Price
@@ -154,130 +152,19 @@
         </li>
       </ul>
 
-      <!---
-          <script>
-            document.addEventListener('DOMContentLoaded', function () {
-              const categoryCheckboxes = document.querySelectorAll('.category-checkbox');
-              const sortingCheckboxes = document.querySelectorAll('.sorting-checkbox');
-              const searchInput = document.getElementById('search-input');
-
-
-              categoryCheckboxes.forEach((checkbox) => {
-                checkbox.addEventListener('change', function () {
-                  handleCategoryCheckbox(checkbox);
-                });
-              });
-          
-              sortingCheckboxes.forEach((checkbox) => {
-                checkbox.addEventListener('change', function () {
-                  handleSortingCheckbox(checkbox);
-                });
-              });
-              searchInput.addEventListener('input', function () {
-                handleSearchInput(searchInput.value);
-              });
-              function getSelectedCategories() {
-                return Array.from(categoryCheckboxes)
-                  .filter((checkbox) => checkbox.checked)
-                  .map((checkbox) => checkbox.id);
-              }
-          
-              function handleCategoryCheckbox(checkbox) {
-                const selectedCategories = getSelectedCategories();
-                const sortCheckbox = document.querySelector('.sorting-checkbox:checked');
-                const sort = sortCheckbox ? sortCheckbox.id : null;
+      <hr class="my-2 border-t border-gray-300">
+      <button
+            type="submit" class="middle none center  rounded-lg bg-indigo-600 py-3 px-24 font-sans text-base font-semibold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            data-ripple-light="true"
+          >
+            Apply Filters
+          </button>
                 
-                
-                sendRequestToServer(selectedCategories.length > 0 ? selectedCategories : null, sort);
-              }
-          
-              function handleSortingCheckbox(checkbox) {
-                sortingCheckboxes.forEach((otherCheckbox) => {
-                  if (otherCheckbox !== checkbox) {
-                    otherCheckbox.checked = false;
-                  }
-                });
-          
-                const sort = checkbox.checked ? checkbox.id : null;
-                const selectedCategories = getSelectedCategories();
-          
-                sendRequestToServer(selectedCategories.length > 0 ? selectedCategories : null, sort);
-              }
-          
-              function sendRequestToServer(categories, sort) {
-                // Additional logic for sending request to the server with categories and sort
-                console.log(`Categories: ${categories}, Sort: ${sort}`);
-          
-                // You may want to send an AJAX request to the server with the selected categories and sort
-              }
-            });
-          </script> -->
-      <!--script>
-        document.addEventListener('DOMContentLoaded', function () {
-          const categoryCheckboxes = document.querySelectorAll('.category-checkbox');
-          const sortingCheckboxes = document.querySelectorAll('.sorting-checkbox');
-          const searchInput = document.getElementById('search-input'); // Get the search input field
 
-          categoryCheckboxes.forEach((checkbox) => {
-            checkbox.addEventListener('change', function () {
-              handleCategoryCheckbox(checkbox);
-            });
-          });
 
-          sortingCheckboxes.forEach((checkbox) => {
-            checkbox.addEventListener('change', function () {
-              handleSortingCheckbox(checkbox);
-            });
-          });
+      </form>
 
-          // Add an event listener for the search input
-          searchInput.addEventListener('input', function () {
-            handleSearchInput(searchInput.value);
-          });
-
-          function getSelectedCategories() {
-            return Array.from(categoryCheckboxes)
-              .filter((checkbox) => checkbox.checked)
-              .map((checkbox) => checkbox.id);
-          }
-
-          function handleCategoryCheckbox(checkbox) {
-            const selectedCategories = getSelectedCategories();
-            const sortCheckbox = document.querySelector('.sorting-checkbox:checked');
-            const sort = sortCheckbox ? sortCheckbox.id : null;
-            const searchQuery = searchInput.value; // Get the search input value
-
-            sendRequestToServer(selectedCategories.length > 0 ? selectedCategories : null, sort, searchQuery);
-          }
-
-          function handleSortingCheckbox(checkbox) {
-            sortingCheckboxes.forEach((otherCheckbox) => {
-              if (otherCheckbox !== checkbox) {
-                otherCheckbox.checked = false;
-              }
-            });
-
-            const sort = checkbox.checked ? checkbox.id : null;
-            const selectedCategories = getSelectedCategories();
-            const searchQuery = searchInput.value; // Get the search input value
-          }
-
-          function handleSearchInput(query) {
-            const selectedCategories = getSelectedCategories();
-            const sortCheckbox = document.querySelector('.sorting-checkbox:checked');
-            const sort = sortCheckbox ? sortCheckbox.id : null;
-
-            sendRequestToServer(selectedCategories.length > 0 ? selectedCategories : null, sort, query);
-          }
-
-          function sendRequestToServer(categories, sort, query) {
-            // Additional logic for sending request to the server with categories, sort, and query
-            console.log(`Categories: ${categories}, Sort: ${sort}, Query: ${query}`);
-
-            // You may want to send an AJAX request to the server with the selected categories, sort, and query
-          }
-        });
-      </script-->
+     
 
       <hr class="my-2 border-t border-gray-300">
 
@@ -326,48 +213,7 @@
       </button>
 
 
-      <script>
-
-        const sidebar = document.getElementById('sidebar');
-        const toggleSidebar = document.getElementById('toggleSidebar');
-        const toggleRentAnything = document.getElementById('toggleRentAnything');
-
-
-        let isSidebarVisible = false;
-
-        toggleSidebar.addEventListener('click', () => {
-          isSidebarVisible = !isSidebarVisible;
-          updateSidebar();
-        });
-
-        toggleRentAnything.addEventListener('click', () => {
-          isSidebarVisible = false;
-          updateSidebar();
-        });
-
-        function updateSidebar() {
-          if (isSidebarVisible) {
-            sidebar.style.transform = 'translateX(0)';
-
-
-          } else {
-            sidebar.style.transform = 'translateX(-100%)';
-
-          }
-
-          sidebar.style.transitionProperty = 'transform';
-          sidebar.style.transitionDuration = '300ms';
-          sidebar.style.transitionTimingFunction = 'ease-in-out';
-
-        }
-
-
-        function updateSidebarLoad() {
-
-          sidebar.style.transform = 'translateX(-100%)';
-
-        }
-      </script>
+     
       <a href="landingpage">
         <h1 class="text-xl font-bold">RentAnything.</h1>
       </a>
@@ -381,7 +227,7 @@
             clip-rule="evenodd" />
         </svg>
       </label>
-      <form id="search-form" action="/searchByName" method="post">
+      <form id="search-form" action="/searchByName" method="POST">
         <input id="search-input" name="search-input"
           class="w-full bg-white pl-16 pr-36  py-2 text-xs rounded-2xl outline-0 focus:bg-gray-50" type="text"
           placeholder="Search ..." />
@@ -393,21 +239,21 @@
 
     <div class="flex items-center mt-2 space-x-5  xl:text-base md:text-sm md:font-bold">
       <a href=""
-        class="border-2  hover:bg-blue-300 hover:bg-opacity-70 border-black rounded-2xl font-semibold text-black invisible xl:visible md:invisible py-1 px-3">About
+        class="border-2  hover:bg-blue-300 hover:bg-opacity-70 border-white rounded-2xl font-semibold text-white invisible xl:visible md:invisible py-1 px-3">About
         Us</a>
       <a href=""
-        class="border-2  hover:bg-blue-300 hover:bg-opacity-70 border-black rounded-2xl font-semibold text-black  py-1 px-3">Create
+        class="border-2  hover:bg-blue-300 hover:bg-opacity-70 border-white rounded-2xl font-semibold text-white  py-1 px-3">Create
         Listing</a>
       <a href=""
-        class="border-2  hover:bg-blue-300 hover:bg-opacity-70 border-black rounded-2xl font-semibold text-black invisible xl:visible md:invisible py-1 px-3">Contact
+        class="border-2  hover:bg-blue-300 hover:bg-opacity-70 border-white rounded-2xl font-semibold text-white invisible xl:visible md:invisible py-1 px-3">Contact
         Us</a>
-      <a href="" class="bg-purple-600 hover:bg-blue-300 p-1 rounded-3xl"><svg xmlns="http://www.w3.org/2000/svg"
+      <a href="" class="borded-white text-white border-2 hover:bg-blue-300 p-1 rounded-3xl"><svg xmlns="http://www.w3.org/2000/svg"
           fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" w-8 h-8">
           <path stroke-linecap="round" stroke-linejoin="round"
             d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
         </svg>
       </a>
-      <a href="profile.html" class=" hover:text-blue-300 hover:bg-opacity-70">
+      <a href="profile.html" class="text-white hover:text-blue-300 hover:bg-opacity-70">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-11 h-12 ">
           <path fill-rule="evenodd"
             d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
@@ -422,7 +268,7 @@
   <div class="flex-grow" id="main-content">
 
     <div class="pt-10 text-center sm:invisible lg:visible">
-      <h2 class="text-xl font-bold">Search results for...</h2>
+      <h2 class="text-xl font-bold">Search results...</h2>
     </div>
     <!-- Product List -->
     <section class="py-10">
@@ -434,7 +280,11 @@
             class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 hover:bg-colour2">
             <a href="">
               <div class="relative flex items-end overflow-hidden rounded-xl">
-                <img class="listing-image" src="<%= listing.listing_images[0] %>" />
+                <% if (listing.listing_images && listing.listing_images.length > 0) { %>
+                  <img class="listing-image" src="<%= listing.listing_images[0] %>" />
+                <% } else { %>
+                  <img class="listing-image" src="apple.jpg" />
+                <% } %>
                 <!-- Assuming you have some kind of icon or badge for the listing -->
               </div>
 
@@ -533,5 +383,49 @@
     </div>
   </footer>
 </body>
+<script>
 
+  const sidebar = document.getElementById('sidebar');
+  const toggleSidebar = document.getElementById('toggleSidebar');
+  const toggleRentAnything = document.getElementById('toggleRentAnything');
+
+
+  let isSidebarVisible = false;
+
+  toggleSidebar.addEventListener('click', () => {
+    isSidebarVisible = !isSidebarVisible;
+    updateSidebar();
+  });
+
+  toggleRentAnything.addEventListener('click', () => {
+    isSidebarVisible = false;
+    updateSidebar();
+  });
+
+  function updateSidebar() {
+    if (isSidebarVisible) {
+      sidebar.style.transform = 'translateX(0)';
+
+
+    } else {
+      sidebar.style.transform = 'translateX(-100%)';
+
+    }
+
+    sidebar.style.transitionProperty = 'transform';
+    sidebar.style.transitionDuration = '300ms';
+    sidebar.style.transitionTimingFunction = 'ease-in-out';
+
+  }
+
+
+  function updateSidebarLoad() {
+
+    sidebar.style.transform = 'translateX(-100%)';
+    var hiddenSidebar = document.getElementById("sidebar");
+    hiddenSidebar.style.display = "block";
+    
+
+  }
+</script>
 </html>

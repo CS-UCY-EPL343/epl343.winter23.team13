@@ -35,6 +35,7 @@ const {
   getAllListings,
   searchResultsView,
   getListingsByName,
+  getListingsByFilter,
 } = require("../controllers/searchController");
 
 //GET REQUESTS
@@ -57,21 +58,13 @@ router.get("/searchResults", async (req, res) => {
   }
 });
 
+
 //
 router.get("/home", homepageView);
 router.get("/", function (req, res, next) {
   res.redirect("/landingpage");
 });
-router.get("/searchResults", async (req, res) => {
-  try {
-    const allListings = await getAllListings(req, res);
 
-    res.render("search_results", { allListings });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Internal Server Error");
-  }
-});
 
 router.post("/dashboard", protectRoute, dashboardView);
 router.post("/register", registerUser);
@@ -82,5 +75,6 @@ router.post("/createlisting", upload.array("listing_images", 5), (req, res) => {
   newListing(req, res);
 });
 router.post("/searchByName", getListingsByName);
+router.post("/filterResults", getListingsByFilter);
 
 module.exports = router;
