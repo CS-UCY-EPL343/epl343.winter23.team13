@@ -49,11 +49,9 @@ section {
 }
 
 .slider {
-  position: relative;
   width: 100%;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  margin-bottom: 50px;
 }
 
 .slider figure {

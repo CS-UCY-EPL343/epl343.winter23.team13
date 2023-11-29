@@ -9,4 +9,11 @@ module.exports = {
   ],
   darkMode: "class",
   plugins: [require("tw-elements/dist/plugin.cjs")],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["Roboto", "Proxima Nova", ...defaultTheme.fontFamily.sans],
+      },
+    },
+  },
 };

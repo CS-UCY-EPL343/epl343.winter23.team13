@@ -36,6 +36,7 @@ const {
   searchResultsView,
   getListingsByName,
   getListingsByFilter,
+  godSearch,
 } = require("../controllers/searchController");
 
 //GET REQUESTS
@@ -58,13 +59,11 @@ router.get("/searchResults", async (req, res) => {
   }
 });
 
-
 //
 router.get("/home", protectRoute, sliderView);
 router.get("/", function (req, res, next) {
   res.redirect("/landingpage");
 });
-
 
 router.post("/dashboard", protectRoute, dashboardView);
 router.post("/register", registerUser);
@@ -74,7 +73,7 @@ router.post("/createlisting", upload.array("listing_images", 5), (req, res) => {
   console.log(req.files);
   newListing(req, res);
 });
-router.post("/searchByName", getListingsByName);
-router.post("/filterResults", getListingsByFilter);
+router.post("/searchByName", godSearch);
+router.post("/filterResults", godSearch);
 
 module.exports = router;

@@ -51,7 +51,7 @@ const registerUser = (req, res) => {
     });
   }
 };
-// For View
+// For Rendering the View
 const loginView = (req, res) => {
   let errorMessage = "";
   errorMessage = req.flash('error');
