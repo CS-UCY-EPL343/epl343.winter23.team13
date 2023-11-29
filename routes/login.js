@@ -13,7 +13,7 @@ const {
   createlistingView,
   newListing,
 } = require("../controllers/listingcreateController");
-const { homepageView } = require("../controllers/homepageController");
+const { sliderView } = require("../controllers/sliderController");
 //const { upload, storage } = require("../index");
 const router = express.Router();
 const multer = require("multer");
@@ -60,7 +60,7 @@ router.get("/searchResults", async (req, res) => {
 
 
 //
-router.get("/home", homepageView);
+router.get("/home", protectRoute, sliderView);
 router.get("/", function (req, res, next) {
   res.redirect("/landingpage");
 });

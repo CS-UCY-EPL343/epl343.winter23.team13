@@ -35,7 +35,7 @@ const newListing = (req, res) => {
       owner.listings.push(newListing);
       owner.save();
     });
-    res.redirect("/dashboard");
+    res.redirect("/home");
   }
 };
 

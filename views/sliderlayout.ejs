@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html class="h-full bg-indigo-100 ">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>slider</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="swiper.css">
+    <link href="slider.css" rel="stylesheet">
+    <link href="output.css" rel="stylesheet" type="text/css" />
+    <style>
+        .slider {
+            background-image: url('i1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            transition: background-image 0.5s ease-in-out;
+
+            /* Other styles */
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        @import url('https://fonts.googleapis.com/css?family=Roboto');
+    </style>
+</head>
+<!--<body class="h-full flex flex-col">-->
+
+<body style="background-image: url('layered-waves-haikei (2).svg')" class="bg-cover">
+    <nav class="bg-primary flex items-center justify-between px-5 py-1 text-white z-10 top-0 w-full sticky">
+
+        <a href="/home">
+            <h1 class="text-xl font-bold text-white">RentAnything.</h1>
+        </a>
+        </div>
+
+        <div class="flex w-[350px] items-center space-x-3 border-black shadow-sd relative">
+            <label for="search-input" class="absolute left-4 top-1 text-gray-400 border-r pr-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                    <path fill-rule="evenodd"
+                        d="M10.5 3.75a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM2.25 10.5a8.25 8.25 0 1114.59 5.28l4.69 4.69a.75.75 0 11-1.06 1.06l-4.69-4.69A8.25 8.25 0 012.25 10.5z"
+                        clip-rule="evenodd" />
+                </svg>
+            </label>
+            <form id="search-form" action="/searchByName" method="post">
+                <input id="search-input" name="search-input"
+                    class="w-full bg-white pl-10 pr-48 py-2 text-xs rounded-2xl font-bold outline-0 focus:bg-gray-50 text-black" type="text"
+                    placeholder="Search ..." />
+
+            </form>
+        </div>
+
+        <div class="flex items-center mt-2 space-x-5 text-base">
+            <a href=""
+                class="border-2  hover:bg-blue-300 hover:bg-opacity-70 border-white rounded-2xl font-semibold text-white  py-1 px-3">About
+                Us</a>
+            <a href="/createlisting"
+                class="border-2  hover:bg-blue-300 hover:bg-opacity-70 border-white rounded-2xl font-semibold text-white  py-1 px-3">Create Listing</a>
+            <a href=""
+                class="border-2  hover:bg-blue-300 hover:bg-opacity-70 border-white rounded-2xl font-semibold text-white  py-1 px-3">Contact
+                Us</a>
+            <a href="" class="border-2 border-white hover:bg-blue-300 p-1 rounded-3xl"><svg xmlns="http://www.w3.org/2000/svg"
+                    fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" w-8 h-8">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                </svg>
+            </a>
+            <form class="form-horizontal" method="post" action="/logout">
+                <div>
+                    <button type="submit" class="hover:text-blue-300 hover:bg-opacity-70">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-11 h-12 ">
+                          <path fill-rule="evenodd"
+                            d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                            clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </nav>
+    <div class="slider drop-shadow-2xl">
+        <div class="slider-container" style="filter: none;" id="slider-container">
+            <figure>
+                <img src="electric_scooter.jpg" alt="Image 1" style="object-fit: fill; margin-top: 50px; height: 300px;"
+                    class="mx-auto">
+            </figure>
+            <figure>
+                <img src="DjConsole.jpg" alt="Image 2" style="object-fit: fill; margin-top: 50px; height: 300px;"
+                    class="mx-auto">
+            </figure>
+            <figure>
+                <img src="camera.jpg" alt="Image 2" style="object-fit: fill; margin-top: 50px; height: 300px;"
+                    class="mx-auto">
+            </figure>
+            <figure>
+                <img src="playstation_5.jpg" alt="Image 2" style="object-fit: fill; margin-top: 50px; height: 300px;"
+                    class="mx-auto">
+            </figure>
+            <figure>
+                <img src="explorer.jpg" alt="Image 2" style="object-fit: fill; margin-top: 50px; height: 300px;"
+                    class="mx-auto">
+            </figure>
+        </div>
+    </div>
+    <div class="flex-grow">
+
+        <div class="flex flex-col items-center justify-center h-full mt-10 font-bold">
+            <span class="font-montserrat text-center text-4xl font-bold">Most Popular</span>
+        </div>
+
+
+
+        <section class=" h-48 mb-48">
+            <div class="slide-container swiper flex-1 p-0">
+                <div class="slide-content">
+                    <div class="card-wrapper swiper-wrapper">
+
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+                                <div class="card-image">
+                                    <a href></a>
+                                    <img src="canon.jpg" alt="apple" class="card-img">
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h2 class="name">Camera</h2>
+                                <p
+                                    class="truncate-2-lines hidden sm:block description overflow-hidden overflow-ellipsis">
+                                    Precision imaging, superior performance, moments captured with perfection.</p>
+                                <div class="div-card">
+                                    <div class="div-card2">
+                                        <text class="text-money">$25</text>
+                                        <button class="button flex"><svg class="svg-styling"
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                                            </svg> Add to cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+                                <div class="card-image">
+                                    <img src="Drone2.webp" alt="apple" class="card-img">
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h2 class="name">Drone</h2>
+                                <p
+                                    class="truncate-2-lines hidden sm:block  description overflow-hidden overflow-ellipsis">
+                                    Soar to new heights with cutting-edge aerial technology and precision..</p>
+                                <div class="div-card">
+                                    <div class="div-card2">
+                                        <text class="text-money">$70</text>
+                                        <button class="button flex"><svg class="svg-styling"
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                                            </svg> Add to cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+                                <div class="card-image">
+                                    <img src="electric_scooter.jpg" alt="apple" class="card-img">
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h2 class="name">Electric Scooter</h2>
+                                <p
+                                    class="truncate-2-lines hidden sm:block  description overflow-hidden  overflow-ellipsis">
+                                    Efficient urban travel meets sleek design in our latest electric scooter.</p>
+                                <div class="div-card">
+                                    <div class="div-card2">
+                                        <text class="text-money">$50</text>
+                                        <button class="button flex"><svg class="svg-styling"
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                                            </svg> Add to cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+                                <div class="card-image">
+                                    <img src="explorer.jpg" alt="apple" class="card-img">
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h2 class="name">Explorer</h2>
+                                <p
+                                    class="truncate-2-lines hidden sm:block  description overflow-hidden  overflow-ellipsis">
+                                    Ride the road of adventure with our durable and agile explorer bike.</p>
+                                <div class="div-card">
+                                    <div class="div-card2">
+                                        <text class="text-money">$30</text>
+                                        <button class="button flex"><svg class="svg-styling"
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                                            </svg> Add to cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+                                <div class="card-image">
+                                    <img src="playstation_5.jpg" alt="apple" class="card-img">
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h2 class="name">PlayStation 5</h2>
+                                <p
+                                    class="truncate-2-lines hidden sm:block  description overflow-hidden  overflow-ellipsis">
+                                    Immerse yourself in next-gen gaming with stunning graphics and innovation.</p>
+                                <div class="div-card">
+                                    <div class="div-card2">
+                                        <text class="text-money">$69</text>
+                                        <button class="button flex"><svg class="svg-styling"
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                                            </svg> Add to cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+                                <div class="card-image">
+                                    <img src="projector.jpg" alt="apple" class="card-img">
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h2 class="name">Projector</h2>
+                                <p
+                                    class="truncate-2-lines hidden sm:block  description overflow-hidden  overflow-ellipsis">
+                                    Vibrant visuals, portable design, immersive cinematic experience.</p>
+                                <div class="div-card">
+                                    <div class="div-card2">
+                                        <text class="text-money">$20</text>
+                                        <button class="button flex"><svg class="svg-styling"
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                                            </svg> Add to cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+                                <div class="card-image">
+                                    <img src="Backpack.webp" alt="apple" class="card-img">
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h2 class="name">Backpack</h2>
+                                <p
+                                    class="truncate-2-lines hidden sm:block  description overflow-hidden  overflow-ellipsis">
+                                    Durable, spacious backpack for adventures, blending style with functionality
+                                    effortlessly.</p>
+                                <div class="div-card">
+                                    <div class="div-card2">
+                                        <text class="text-money">$10</text>
+                                        <button class="button flex"><svg class="svg-styling"
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                                            </svg> Add to cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+        </section>
+    </div>
+
+    <div class="flex flex-col items-center justify-center h-full mt-10 font-bold">
+        <span class="font-montserrat text-center text-4xl font-bold">New Listings</span>
+    </div>
+
+    <div class="flex-grow">
+        <section class="py-10 h-48 mb-96">
+            <div class="slide-container swiper flex-1 ">
+                <div class="slide-content">
+                    <div class="card-wrapper swiper-wrapper">
+
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+                                <div class="card-image">
+                                    <a href></a>
+                                    <img src="car.avif" alt="toy car" class="card-img">
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h2 class="name">Toy Car</h2>
+                                <p
+                                    class="truncate-2-lines hidden sm:block description overflow-hidden overflow-ellipsis">
+                                    Miniature, colorful, durable, remote-controlled, playful, imaginative, kid-friendly, zooming fun.</p>
+                                <div class="div-card">
+                                    <div class="div-card2">
+                                        <text class="text-money">$8</text>
+                                        <button class="button flex"><svg class="svg-styling"
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                                            </svg> Add to cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+                                <div class="card-image">
+                                    <img src="airpods.webp" alt="apple" class="card-img">
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h2 class="name">Airpods</h2>
+                                <p
+                                    class="truncate-2-lines hidden sm:block  description overflow-hidden overflow-ellipsis">
+                                    Wireless, noise-canceling, immersive sound, comfortable fit, sleek design, touch controls.</p>
+                                <div class="div-card">
+                                    <div class="div-card2">
+                                        <text class="text-money">$15</text>
+                                        <button class="button flex"><svg class="svg-styling"
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                                            </svg> Add to cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+                                <div class="card-image">
+                                    <img src="speaker.jpg" alt="apple" class="card-img">
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h2 class="name">Speaker</h2>
+                                <p
+                                    class="truncate-2-lines hidden sm:block  description overflow-hidden  overflow-ellipsis">
+                                    Powerful, clear audio, sleek design, wireless connectivity, deep bass, versatile.</p>
+                                <div class="div-card">
+                                    <div class="div-card2">
+                                        <text class="text-money">$30</text>
+                                        <button class="button flex"><svg class="svg-styling"
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                                            </svg> Add to cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+                                <div class="card-image">
+                                    <img src="hoover.webp" alt="hoover" class="card-img">
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h2 class="name">Hoover</h2>
+                                <p
+                                    class="truncate-2-lines hidden sm:block  description overflow-hidden  overflow-ellipsis">
+                                    Smart, autonomous, efficient cleaning, sensors, sleek design, hassle-free maintenance, quiet</p>
+                                <div class="div-card">
+                                    <div class="div-card2">
+                                        <text class="text-money">$20</text>
+                                        <button class="button flex"><svg class="svg-styling"
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                                            </svg> Add to cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+                                <div class="card-image">
+                                    <img src="lawn_mower.jpg" alt="lawn_mower" class="card-img">
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h2 class="name">Lawn Mower</h2>
+                                <p
+                                    class="truncate-2-lines hidden sm:block  description overflow-hidden  overflow-ellipsis">
+                                    Robust, self-propelled, precise cutting, efficient, quiet, ergonomic design, easy maintenance.</p>
+                                <div class="div-card">
+                                    <div class="div-card2">
+                                        <text class="text-money">$69</text>
+                                        <button class="button flex"><svg class="svg-styling"
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                                            </svg> Add to cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+                                <div class="card-image">
+                                    <img src="xbox.jpg" alt="xbox" class="card-img">
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h2 class="name">X-Box</h2>
+                                <p
+                                    class="truncate-2-lines hidden sm:block  description overflow-hidden  overflow-ellipsis">
+                                    Next-gen gaming console, immersive graphics, multiplayer, expansive game library, sleek.</p>
+                                <div class="div-card">
+                                    <div class="div-card2">
+                                        <text class="text-money">$50</text>
+                                        <button class="button flex"><svg class="svg-styling"
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                                            </svg> Add to cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+                                <div class="card-image">
+                                    <img src="gaming_chair.jpg" alt="gaming_chair" class="card-img">
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h2 class="name">Gaming Chair</h2>
+                                <p
+                                    class="truncate-2-lines hidden sm:block  description overflow-hidden  overflow-ellipsis">
+                                    Ergonomic design, adjustable comfort, lumbar support, stylish, perfect for gaming.</p>
+                                <div class="div-card">
+                                    <div class="div-card2">
+                                        <text class="text-money">$20</text>
+                                        <button class="button flex"><svg class="svg-styling"
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                                            </svg> Add to cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+        </section>
+    </div>
+    <script src="swiper.js"></script>
+    <script src="swipping.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const elements = document.querySelectorAll(".truncate-2-lines");
+
+            elements.forEach(element => {
+                const originalText = element.textContent;
+
+                // Check if the text length is greater than 80 characters
+                if (originalText.length > 80) {
+                    // Trim the text to the first 80 characters and add an ellipsis
+                    element.textContent = originalText.slice(0, 80) + '...';
+                }
+            });
+        });
+    </script>
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slider figure');
+        const container = document.getElementById('slider-container');
+        const slider = document.querySelector('.slider');
+        setSliderBackground();
+        
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            container.style.transform = `translateX(-${currentIndex * 100}%)`;
+            setSliderBackground();
+        }
+
+        function prevSlide() {
+            // To prevent sliding to the left
+            if (currentIndex > 0) {
+                currentIndex = (currentIndex - 1) % slides.length;
+                container.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+        }
+
+        function setSliderBackground() {
+            const currentImageElement = slides[currentIndex].querySelector('img');
+            const currentImageSrc = currentImageElement.getAttribute('src');
+            const fileNameWithoutExtension = currentImageSrc.split('/').pop().split('.')[0];
+            const blurredImageName = `${fileNameWithoutExtension}_blur.${currentImageSrc.split('.').pop()}`;
+            document.querySelector('.slider').style.backgroundImage = `url('${blurredImageName}')`;
+        }
+        setInterval(nextSlide, 3000);
+    </script>
+
+
+    <footer class="bg-white dark:bg-gray-900 w-full bottom-0">
+        <div class="container px-6 py-12 mx-auto">
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-5">
+                <div class="sm:col-span-2">
+                    <h1 class="max-w-lg text-xl font-semibold tracking-tight text-gray-800 xl:text-2xl dark:text-white">
+                        Subscribe our newsletter to get update.</h1>
+
+                    <div class="flex flex-col mx-auto mt-6 space-y-3 md:space-y-0 md:flex-row">
+                        <input id="email" type="text"
+                            class="px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
+                            placeholder="Email Address">
+
+                        <button
+                            class="w-full px-6 py-2.5 text-sm font-medium tracking-wider text-white transition-colors duration-300 transform md:w-auto md:mx-4 focus:outline-none bg-gray-800 rounded-lg hover:bg-gray-700 focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="font-semibold text-gray-800 dark:text-white">Quick Link</p>
+
+                    <div class="flex flex-col items-start mt-5 space-y-2">
+                        <a href="#"
+                            class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">Home</a>
+                        <a href="#"
+                            class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">About
+                            Us</a>
+                        <a href="#"
+                            class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">Our
+                            Philosophy</a>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="font-semibold text-gray-800 dark:text-white">Let us help you.</p>
+
+                    <div class="flex flex-col items-start mt-5 space-y-2">
+                        <a href="#"
+                            class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">Suggestions.</a>
+                        <a href="#"
+                            class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">Help
+                            with Listings.</a>
+                        <a href="#"
+                            class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">Membership</a>
+                    </div>
+                </div>
+                <div>
+                    <p class="font-semibold text-gray-800 dark:text-white">Popular Categories</p>
+
+                    <div class="flex flex-col items-start mt-5 space-y-2">
+                        <a href="#"
+                            class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">Electronic
+                            Gadget</a>
+                        <a href="#"
+                            class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">Camera
+                            Equipment</a>
+                        <a href="#"
+                            class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">Audio
+                            Equipment</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </footer>
+
+
+</body>
+
+
+</html>

@@ -71,7 +71,7 @@ const loginUser = (req, res) => {
     });
   } else {
     passport.authenticate("local", {
-      successRedirect: "/dashboard",
+      successRedirect: "/home",
       failureRedirect: "/login",
       failureMessage: true,
       failureFlash: req.flash('error'),
