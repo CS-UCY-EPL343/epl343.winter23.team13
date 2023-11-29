@@ -4,12 +4,12 @@
 
 Requirements: Have Node.js downloaded
 
-1.Npm i
-2.npx tailwind -i input.css -o public/output.css
-3.npm run develop
-4.http://localhost:4111
-5.Press Login but account doesnt exist when first inside.
-6.Sign UP
-7.Then Login.
+1.Npm i<br />
+2.npx tailwind -i input.css -o public/output.css<br />
+3.npm run develop<br />
+4.http://localhost:4111<br />
+5.Press Login but account doesnt exist when first inside.<br />
+6.Sign UP<br />
+7.Then Login.<br />
 
-(needs the .env to work)
+(needs the .env file to work)
