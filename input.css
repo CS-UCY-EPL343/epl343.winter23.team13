@@ -6,10 +6,8 @@
 
 @import "tailwindcss/utilities";
 
-/* Vale to Bold gia to Roboto */
 html * {
   font-family: "Roboto";
-  
 }
 
 header {
@@ -21,14 +19,13 @@ header {
   border-bottom-right-radius: 20px;
 }
 /*
-nav {
+.my_nav {
   background-color: #393e46;
   text-align: center;
   transition: background-color 0.3s ease;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-}
-*/
+}*/
 
 section {
   display: flex;
@@ -49,4 +46,23 @@ section {
   width: 100%;
   height: 200px;
   object-fit: cover;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  margin-bottom: 50px;
+}
+
+.slider figure {
+  display: inline-block;
+  width: 100%;
+  transition: transform 1s ease-in-out;
+}
+
+.slider-container {
+  white-space: nowrap;
+  transition: transform 1s ease-in-out;
 }
